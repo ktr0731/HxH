@@ -23,6 +23,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    @OnClick(R.id.button_family)
+    public void onClickFamilyButton(){
+        Intent i = new Intent(this, FamilyActivity.class);
+        startActivity(i);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
