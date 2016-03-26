@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.ListView;
+import android.widget.Spinner;
 
 import com.syfm.hxh.Adapter.QuestionListAdapter;
 import com.syfm.hxh.R;
@@ -25,6 +26,9 @@ public class FamilyActivity extends AppCompatActivity {
     @Bind(R.id.listview_family)
     ListView listView;
 
+    private ArrayList<HashMap<String, String>> list = new ArrayList<>();
+    private int number = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,20 +37,23 @@ public class FamilyActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        toolbar.setTitle("Personal");
+        toolbar.setTitle("Family");
         toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
 
-        // For debug
-
-        ArrayList<HashMap<String, String>> list = new ArrayList<>();
-        for (int i = 0; i < 30; i++) {
-            HashMap<String, String> data = new HashMap<>();
-            data.put(Const.QUESTION_NUMBER, String.format("Q%s.", String.valueOf(i+1)));
-            data.put(Const.QUESTION_TEXT,   "HogeHoge");
-            list.add(data);
-        }
+        setListData("車の送迎による通院は可能ですか?");
+        setListData("支援するための時間は十分にありますか?");
+        setListData("支援するための資金は十分にありますか?");
+        setListData("支援に対する気持ちはどうですか?");
 
         QuestionListAdapter adapter = new QuestionListAdapter(this, list);
         listView.setAdapter(adapter);
+    }
+
+    private void setListData(String text) {
+        number++;
+        HashMap<String, String> data = new HashMap<>();
+        data.put(Const.QUESTION_NUMBER, String.format("Q%s.", String.valueOf(number)));
+        data.put(Const.QUESTION_TEXT,   text);
+        list.add(data);
     }
 }

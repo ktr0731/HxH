@@ -33,7 +33,7 @@ public class PersonalActivity extends AppCompatActivity {
     }
 
     private ArrayList<HashMap<String, String>> list = new ArrayList<>();
-    private static int number = 0;
+    private int number = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
