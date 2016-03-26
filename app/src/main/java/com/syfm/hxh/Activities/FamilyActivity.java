@@ -1,4 +1,4 @@
-package com.syfm.hxh;
+package com.syfm.hxh.Activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
