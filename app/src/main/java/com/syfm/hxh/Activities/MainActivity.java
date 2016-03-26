@@ -1,4 +1,4 @@
-package com.syfm.hxh;
+package com.syfm.hxh.Activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,7 +6,14 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
+import android.widget.ListView;
+
+import com.syfm.hxh.Adapter.QuestionListAdapter;
+import com.syfm.hxh.R;
+import com.syfm.hxh.Utils.Const;
+
+import java.util.HashMap;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -32,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar.setTitle("Record");
         toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
+
     }
 
     @Override
