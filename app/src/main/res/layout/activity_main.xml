@@ -8,8 +8,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/toolbar"
-        android:title="Create Record" />
+        android:background="@color/toolbar" />
 
     <LinearLayout
         android:orientation="vertical"
@@ -22,13 +21,15 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:gravity="center"
-            android:text="Personal" />
+            android:text="Personal"
+            android:id="@+id/button_personal"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:gravity="center"
-            android:text="Family" />
+            android:text="Family"
+            android:id="@+id/button_family" />
 
     </LinearLayout>
 

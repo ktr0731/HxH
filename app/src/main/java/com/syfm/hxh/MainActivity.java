@@ -1,16 +1,43 @@
 package com.syfm.hxh;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
+
+    @Bind(R.id.toolbar)
+    Toolbar toolbar;
+
+    @OnClick(R.id.button_personal)
+    public void onClickPersonalButton() {
+        Intent i = new Intent(this, PersonalActivity.class);
+        startActivity(i);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ButterKnife.bind(this);
+
+        toolbar.setTitle("Record");
+        toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
     }
 
     @Override
