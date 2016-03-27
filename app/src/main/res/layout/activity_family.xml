@@ -22,11 +22,13 @@
             android:layout_height="wrap_content" />
 
         <Button
-            android:id="@+id/button_next"
+            android:id="@+id/button_finish"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="20dp"
-            android:text="Finish" />
+            android:visibility="gone"
+            android:background="@color/toolbar"
+            android:text="完了" />
 
     </LinearLayout>
 

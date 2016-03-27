@@ -4,6 +4,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string-array name="selection">
+        <item>-- 選択してください --</item>
         <item>当てはまる</item>
         <item>やや当てはまる</item>
         <item>どちらともいえない</item>

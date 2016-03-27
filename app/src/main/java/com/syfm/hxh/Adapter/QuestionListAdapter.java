@@ -1,9 +1,11 @@
 package com.syfm.hxh.Adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -17,6 +19,8 @@ import java.util.zip.Inflater;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnItemSelected;
+import de.greenrobot.event.EventBus;
 
 /**
  * Created by lycoris on 2016/03/26.
@@ -27,12 +31,15 @@ public class QuestionListAdapter extends BaseAdapter {
     ArrayList<HashMap<String, String>> list;
     LayoutInflater inflater;
 
-    public QuestionListAdapter(Context context, ArrayList<HashMap<String, String>> list) {
+    public QuestionListAdapter(Context context, ArrayList<HashMap<String, String>> list, int count) {
         this.context = context;
         this.list = list;
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
+        this.max_count = count;
     }
+
+    private int count;
+    private int max_count;
 
     @Override
     public int getCount() {
@@ -61,6 +68,28 @@ public class QuestionListAdapter extends BaseAdapter {
             view.setTag(holder);
         }
 
+        holder.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (count > 0 && position == 0) {
+                    // -- 選択してください --
+                    count--;
+                } else {
+                    count++;
+                }
+
+                if(isValid()) {
+                    EventBus.getDefault().post(true);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
         holder.tv_question_number.setText(list.get(position).get(Const.QUESTION_NUMBER));
         holder.tv_question_text.setText(list.get(position).get(Const.QUESTION_TEXT));
 
@@ -73,9 +102,20 @@ public class QuestionListAdapter extends BaseAdapter {
         TextView tv_question_number;
         @Bind(R.id.tv_question_text)
         TextView tv_question_text;
+        @Bind(R.id.spinner_selection)
+        Spinner spinner;
+
 
         public ViewHolder(View view) {
             ButterKnife.bind(this, view);
         }
+    }
+
+    public boolean isValid() {
+        if (this.max_count == count) {
+            return true;
+        }
+
+        return false;
     }
 }

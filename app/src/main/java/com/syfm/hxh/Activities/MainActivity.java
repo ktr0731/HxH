@@ -21,13 +21,7 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.button_personal)
     public void onClickPersonalButton() {
         Intent i = new Intent(this, PersonalActivity.class);
-        startActivity(i);
-    }
-
-    @OnClick(R.id.button_family)
-    public void onClickFamilyButton(){
-        Intent i = new Intent(this, FamilyActivity.class);
-        startActivity(i);
+        startActivityForResult(i, 0);
     }
 
     @Override
@@ -37,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        toolbar.setTitle("Record");
+        toolbar.setTitle("記録する");
         toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
 
     }
